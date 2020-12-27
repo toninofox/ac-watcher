@@ -1,0 +1,13 @@
+{
+  "extends": [
+    "airbnb-base",
+    "plugin:chai-friendly/recommended"
+  ],
+  "env": {
+    "node": true,
+    "mocha": true
+  },
+  "plugins": [
+    "chai-friendly"
+  ]
+}

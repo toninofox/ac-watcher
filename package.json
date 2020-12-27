@@ -1,0 +1,30 @@
+{
+  "name": "ac-watcher",
+  "version": "1.0.0",
+  "description": "bot to remind ac points",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "sos"
+  ],
+  "author": "Folgore",
+  "license": "ISC",
+  "dependencies": {
+    "agenda": "^3.1.0",
+    "bree": "^4.1.0",
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
+    "lodash": "^4.17.20",
+    "moment": "^2.29.1",
+    "string-builder": "^0.1.8"
+  },
+  "devDependencies": {
+    "eslint": "^7.16.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0"
+  }
+}
