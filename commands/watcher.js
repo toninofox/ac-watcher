@@ -52,6 +52,19 @@ module.exports = {
           await scheduler.help(channel)
         }
       }
+    },
+    {
+      name: '!wma',
+      description: 'lazy helper',
+      async execute(msg, args,bot) {
+        const channel = msg.channel
+        const scheduler = new Scheduler(bot)
+        if(args && args.length){
+          await scheduler.setReminder(channel,args)
+        } else {
+          await scheduler.help(channel)
+        }
+      }
     }
   ]
     

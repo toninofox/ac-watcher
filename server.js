@@ -21,7 +21,14 @@ bot.login(TOKEN);
 
 bot.on('ready', () => { 
   console.info(`Logged in as ${bot.user.tag}!`);
-  bot.setActivity('watchMyAnal', { type: 'LISTENING' })
+  bot.user.setPresence({
+    status: 'online',
+    activity: {
+        name: 'watchMyAnal.help',
+        type: 'LISTENING'
+    }
+  })
+  bot.user.setUsername('Watch My Anal')
 });
 
 bot.on('message', msg => {
