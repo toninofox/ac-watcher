@@ -1,5 +1,0 @@
-runtime: nodejs14
-env_variables:
-  TOKEN: "NzkwMTU4NTY1Nzg0MDI3MTQ2.X98igg.BGI263wPdtcYusqb0WiJSsVKgNc"
-  MONGO_HOST: "mongodb+srv://ac-watcher:0Buv5Agu5M3nQINT@cluster0.zfekw.mongodb.net/ac-watcher?retryWrites=true&w=majority"
-  DEBUG: "*"
