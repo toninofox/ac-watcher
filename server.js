@@ -21,6 +21,7 @@ bot.login(TOKEN);
 
 bot.on('ready', () => { 
   console.info(`Logged in as ${bot.user.tag}!`);
+  bot.setActivity('watchMyAnal', { type: 'LISTENING' })
 });
 
 bot.on('message', msg => {
