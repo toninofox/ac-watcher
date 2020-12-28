@@ -9,7 +9,7 @@ module.exports = {
         const channel = msg.channel
         const scheduler = new Scheduler(bot)
         await scheduler.setReminder(channel,args)
-        await msg.delete({ timeout: 10000 })
+        msg.react('🆗');
       }
     },
     {
@@ -28,7 +28,7 @@ module.exports = {
         const channel = msg.channel
         const scheduler = new Scheduler(bot)
         await scheduler.deleteReminder(channel,args)
-        await msg.delete({ timeout: 10000 })
+        msg.react('🆗');
       }
     },
     {
@@ -48,6 +48,7 @@ module.exports = {
         const scheduler = new Scheduler(bot)
         if(args && args.length){
           await scheduler.setReminder(channel,args)
+          msg.react('🆗');
         } else {
           await scheduler.help(channel)
         }
@@ -61,6 +62,7 @@ module.exports = {
         const scheduler = new Scheduler(bot)
         if(args && args.length){
           await scheduler.setReminder(channel,args)
+          msg.react('🆗');
         } else {
           await scheduler.help(channel)
         }
