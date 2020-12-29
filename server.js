@@ -1,9 +1,21 @@
 require('dotenv').config();
-const {isArray} = require('lodash')
+const express = require('express');
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 bot.commands = new Discord.Collection();
 const botCommands = require('./commands');
+const Scheduler = require('./lib/scheduler');
+
+const app = express();
+const PORT = process.env.PORT || 8080;
+
+app.get('/', (req, res) => {
+  res.send('Ok');
+});
+
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}...`);
+});
 
 Object.keys(botCommands).map(key => {
   if(botCommands[key].list){
@@ -18,6 +30,7 @@ Object.keys(botCommands).map(key => {
 const TOKEN = process.env.TOKEN;
 
 bot.login(TOKEN);
+const scheduler = new Scheduler(bot)
 
 bot.on('ready', () => { 
   console.info(`Logged in as ${bot.user.tag}!`);
@@ -39,7 +52,7 @@ bot.on('message', msg => {
   if (!bot.commands.has(command)) return;
 
   try {
-    bot.commands.get(command).execute(msg, args,bot);
+    bot.commands.get(command).execute(msg, args,scheduler);
   } catch (error) {
     console.error(error);
     msg.reply('there was an error trying to execute that command!');
