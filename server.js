@@ -6,6 +6,7 @@ bot.commands = new Discord.Collection();
 const botCommands = require('./commands');
 const ACReminder = require('./lib/acReminder');
 const Scheduler = require('./lib/scheduler');
+const Agendash = require('agendash2');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -13,6 +14,8 @@ const PORT = process.env.PORT || 8080;
 app.get('/', (req, res) => {
   res.send('Ok');
 });
+
+
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}...`);
@@ -34,6 +37,7 @@ const TOKEN = process.env.TOKEN;
 bot.login(TOKEN);
 const acReminder = new ACReminder(bot)
 const scheduler = new Scheduler(bot)
+app.use('/dash', Agendash(scheduler.getAgenda()));
 
 bot.on('ready', () => { 
   console.info(`Logged in as ${bot.user.tag}!`);
