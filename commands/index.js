@@ -1,3 +1,4 @@
 module.exports = {
-  Watcher: require('./watcher'),
+  acRepo: require('./acSet'),
+  killTheDude: require('./killTheDude'),
 };

@@ -4,6 +4,7 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 bot.commands = new Discord.Collection();
 const botCommands = require('./commands');
+const ACReminder = require('./lib/acReminder');
 const Scheduler = require('./lib/scheduler');
 
 const app = express();
@@ -20,6 +21,7 @@ app.listen(PORT, () => {
 Object.keys(botCommands).map(key => {
   if(botCommands[key].list){
     botCommands[key].list.forEach(el => {
+      console.log("Setting",el.name)
         bot.commands.set(el.name, el);
     });
   } else {
@@ -30,6 +32,7 @@ Object.keys(botCommands).map(key => {
 const TOKEN = process.env.TOKEN;
 
 bot.login(TOKEN);
+const acReminder = new ACReminder(bot)
 const scheduler = new Scheduler(bot)
 
 bot.on('ready', () => { 
@@ -52,7 +55,7 @@ bot.on('message', msg => {
   if (!bot.commands.has(command)) return;
 
   try {
-    bot.commands.get(command).execute(msg, args,scheduler);
+    bot.commands.get(command).execute(msg, args,{scheduler,acReminder});
   } catch (error) {
     console.error(error);
     msg.reply('there was an error trying to execute that command!');
