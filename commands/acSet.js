@@ -63,7 +63,7 @@ const acToMessage = async (ac,msgChannel,channel, scheduler) => {
         await msgChannel.send(`<@${reminderAuthor}> Set the time for ${ac.name} (examples: in 2 days and 12 hours --- in 10 hours --- in 10 minutes)`);
         const collectedMsg = await msgChannel.awaitMessages(m3 => reminderAuthor === m3.author.id ,{ max: 1, time: 30000 ,errors: ['time']})
         const messageCollected = collectedMsg.first()
-        await scheduler.setCustomReminder(channel.id, ac.name, {date: parser ? parser(messageCollected.content) : messageCollected.content, ...ac})
+        await scheduler.setCustomReminder(channel.id, ac.name, {date: messageCollected.content, ...ac})
         messageCollected.react('🆗')
       } catch (error) {
         console.log(error)
